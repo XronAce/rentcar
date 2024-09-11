@@ -43,6 +43,21 @@ public class Point {
     public static void increasePoint(Reserved reserved) {
         //implement business logic here:
 
+        repository().findByUserId(reserved.getUserId()).ifPresentOrElse(point -> {
+            point.setPoint(point.getPoint() + 1);
+            repository().save(point);
+
+            PointIncreased pointIncreased = new PointIncreased(point);
+            pointIncreased.publishAfterCommit();
+        }, () -> {
+            Point point = new Point();
+            point.setUserId(reserved.getUserId());
+            point.setPoint(1);
+            repository().save(point);
+
+            PointIncreased pointIncreased = new PointIncreased(point);
+            pointIncreased.publishAfterCommit();
+        });
         /** Example 1:  new item 
         Point point = new Point();
         repository().save(point);
