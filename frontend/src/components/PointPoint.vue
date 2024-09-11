@@ -16,6 +16,8 @@
         </v-card-title >        
 
         <v-card-text>
+            <Number label="UserId" v-model="value.userId" :editMode="editMode" :inputUI="''"/>
+            <Number label="Point" v-model="value.point" :editMode="editMode" :inputUI="''"/>
         </v-card-text>
 
         <v-card-actions>

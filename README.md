@@ -38,7 +38,7 @@ mvn spring-boot:run
 ```
 - point
 ```
- http :8088/points id="id" 
+ http :8088/points id="id" userId="userId" point="point" 
 ```
 - dashboard
 ```

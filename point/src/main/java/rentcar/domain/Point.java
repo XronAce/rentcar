@@ -19,6 +19,10 @@ public class Point {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private Long userId;
+
+    private Integer point;
+
     @PostPersist
     public void onPostPersist() {
         PointIncreased pointIncreased = new PointIncreased(this);
@@ -43,6 +47,8 @@ public class Point {
         Point point = new Point();
         repository().save(point);
 
+        PointIncreased pointIncreased = new PointIncreased(point);
+        pointIncreased.publishAfterCommit();
         */
 
         /** Example 2:  finding and process
@@ -52,6 +58,8 @@ public class Point {
             point // do something
             repository().save(point);
 
+            PointIncreased pointIncreased = new PointIncreased(point);
+            pointIncreased.publishAfterCommit();
 
          });
         */

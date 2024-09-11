@@ -12,6 +12,8 @@ import rentcar.infra.AbstractEvent;
 public class PointIncreased extends AbstractEvent {
 
     private Long id;
+    private Long userId;
+    private Integer point;
 
     public PointIncreased(Point aggregate) {
         super(aggregate);
